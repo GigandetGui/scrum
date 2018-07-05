@@ -3,129 +3,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        
         <title>Facelet Title</title>
     </h:head>
     <h:body>
     <div id="main">
         
-<p:megaMenu style="margin-top:20px">
-    <p:menuitem value="Promotions" outcome="toIndex" icon="ui-icon-user" />
-    <p:submenu label="JEROME" icon="ui-icon-check">
-        <p:column>
-            <p:submenu label="TV.1">
-                <p:menuitem value="TV.1.1" url="#" />
-                <p:menuitem value="TV.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="TV.2">
-                <p:menuitem value="TV.2.1" url="#" />
-                <p:menuitem value="TV.2.2" url="#" />
-                <p:menuitem value="TV.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="TV.4">
-                <p:menuitem value="TV.4.1" url="#" />
-                <p:menuitem value="TV.4.2" url="#" />
-            </p:submenu>
-            <p:submenu label="TV.5">
-                <p:menuitem value="TV.5.1" url="#" />
-                <p:menuitem value="TV.5.2" url="#" />
-                <p:menuitem value="TV.5.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <strong>Image</strong>
-            <p:graphicImage name="/demo/images/nature/nature1.jpg" width="200"/>
-        </p:column>
-    </p:submenu>
- 
-    <p:submenu label="LE" icon="ui-icon-document">
- 
-        <p:column>
-            <p:submenu label="Sports.1">
-                <p:menuitem value="Sports.1.1" url="#" />
-                <p:menuitem value="Sports.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Sports.2">
-                <p:menuitem value="Sports.2.1" url="#" />
-                <p:menuitem value="Sports.2.2" url="#" />
-                <p:menuitem value="Sports.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="Sports.4">
-                <p:menuitem value="Sports.4.1" url="#" />
-                <p:menuitem value="Sports.4.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Sports.5">
-                <p:menuitem value="Sports.5.1" url="#" />
-                <p:menuitem value="Sports.5.2" url="#" />
-                <p:menuitem value="Sports.5.3" url="#" />
-            </p:submenu>
-        </p:column>
-        <p:column>
-            <p:submenu label="Sports.7">
-                <p:menuitem value="Sports.7.1" url="#" />
-                <p:menuitem value="Sports.7.2" url="#" />
-            </p:submenu>
-        </p:column>
-    </p:submenu>
- 
-    <p:submenu label="PLUS BEAU" icon="ui-icon-pencil">
-        <p:column>
-            <p:submenu label="Entertainment.1">
-                <p:menuitem value="Entertainment.1.1" url="#" />
-                <p:menuitem value="Entertainment.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Entertainment.2">
-                <p:menuitem value="Entertainment.2.1" url="#" />
-                <p:menuitem value="Entertainment.2.2" url="#" />
-                <p:menuitem value="Entertainment.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="Entertainment.4" icon="ui-icon-help">
-                <p:menuitem value="Entertainment.4.1" url="#" />
-                <p:menuitem value="Entertainment.4.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Entertainment.5">
-                <p:menuitem value="Entertainment.5.1" url="#" />
-                <p:menuitem value="Entertainment.5.2" url="#" />
-                <p:menuitem value="Entertainment.5.3" url="#" />
-            </p:submenu>
-        </p:column>
-    </p:submenu>
- 
-    <p:submenu label="Tech" icon="ui-icon-contact">
-        <p:column>
-            <p:submenu label="Tech.1">
-                <p:menuitem value="Tech.1.1" url="#" />
-                <p:menuitem value="Tech.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="Tech.2">
-                <p:menuitem value="Tech.2.1" url="#" />
-                <p:menuitem value="Tech.2.2" url="#" />
-                <p:menuitem value="Tech.2.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <p:submenu label="Tech.4">
-                <p:menuitem value="Tech.4.1" url="#" />
-                <p:menuitem value="Tech.4.2" url="#" />
-            </p:submenu>
-        </p:column>
-    </p:submenu>
- 
-    <p:menuitem value="Quit" outcome="toIndex" icon="ui-icon-close" />
-</p:megaMenu>
+        <!-- Dropdown Structure -->
+        <ul id="promos" class="dropdown-content">
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li class="divider"></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+        <nav>
+          <div class="nav-wrapper blue">
+              <div class="container">
+            <a href="#!" class="brand-logo">Scrum</a>
+            <ul class="right hide-on-med-and-down">
+              <li><h:link value="Promotions" outcome="toIndex" /></li>
+              <li><a href="badges.html">Components</a></li>
+              <!-- Dropdown Trigger -->
+              <li><a class="dropdown-trigger" href="#!" data-activates="promos">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>  
+              </div>
+
+          </div>
+        </nav>
         
+        <div class="container" style="margin-top:40px">
+            
         <ui:insert name="main_content"/>
+        
+        </div>
     </div>
+        
+        
     </h:body>
+    
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script>
+            $( document ).ready(function() {
+                $(".dropdown-trigger").dropdown();
+            
+            });
+
+        </script>
 </html>
 
