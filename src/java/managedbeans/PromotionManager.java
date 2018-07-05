@@ -51,6 +51,7 @@ public class PromotionManager implements Serializable
    {
       promotionFacade.remove(promo);
       promotions.remove(promo);
+      addMessage("Promotion supprimée avec succès !");
    }
 
 

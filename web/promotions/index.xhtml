@@ -9,9 +9,7 @@
             <h:form>
                 <ui:insert name="form_content" />
 
-
-
-                <p:dataTable tableStyleClass="table striped centered" var="promo" value="#{promotionManager.promotions}">
+                <p:dataTable tableStyleClass="table striped centered" var="promo" value="#{promotionManager.promotions}" id="updateMe">
                     <p:column headerText="Titre">
                         <h:outputText value="#{promo.titre}" />
                     </p:column>
@@ -19,7 +17,8 @@
                         <p:commandButton value="Modifier" action="#{promotionManager.editPromotion(promo)}" styleClass="btn waves-effect waves-light blue" />
                     </p:column>
                     <p:column headerText="Supprimer">
-                       <p:commandButton value="Supprimer" action="#{promotionManager.editArticle(art.id)}" styleClass="btn waves-effect waves-light red" />
+                        <p:growl id="promotionGrowl" life="2000" />
+                      <p:commandButton value="Supprimer" ajax="true" update="promotionGrowl,updateMe" actionListener="#{promotionManager.deletePromotion(promo)}" styleClass="btn waves-effect waves-light red" />
                     </p:column>
                 </p:dataTable>
 
