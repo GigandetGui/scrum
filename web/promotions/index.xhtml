@@ -1,14 +1,19 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    template="/layout.xhtml">
+    template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="main_content">
             <div id="main">
                 <h:form>
                     <ui:insert name="form_content" />
                     
-                    dd
+                    <p:dataTable var="promo" value="#{promotionManager.promotions}">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{promo.titre}" />
+                        </p:column>
+
+                    </p:dataTable>
                 </h:form>
             </div>
     </ui:define>
