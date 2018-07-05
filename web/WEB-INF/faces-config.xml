@@ -8,6 +8,17 @@
         <navigation-case>
             <from-outcome>toIndex</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toIndexPromotion</from-outcome>
+            <to-view-id>/promotions/index.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toCreatePromotion</from-outcome>
+            <to-view-id>/promotions/create.xhtml</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
 </faces-config>

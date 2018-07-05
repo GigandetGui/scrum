@@ -38,34 +38,35 @@ public class PromotionManager implements Serializable
       promotionToAdd = new Promotion();
    }
 
-   public void createPromotion(ActionEvent actionEvent)
+   public String createPromotion(ActionEvent actionEvent)
    {
       promotionFacade.create(promotionToAdd);
       promotionToAdd = new Promotion();
       addMessage("Promotion ajouté avec succès !");
+      return "toIndexPromotion";
    }
 
-   public void deletePromotion(Promotion pro)
+   public void deletePromotion(Promotion promo)
    {
-      promotionFacade.remove(pro);
-      promotions.remove(pro);
+      promotionFacade.remove(promo);
+      promotions.remove(promo);
    }
 
 
-   public String editPromotion(Promotion pro)
+   public String editPromotion(Promotion promo)
    {
-      promotion = pro;
+      promotion = promo;
       return "toShowPromotion";
    }
    
-      public String updatePromotion(Promotion pro)
+      public String updatePromotion(Promotion promo)
    {
 //      promotionFacade.edit(promotion);
 //      return "toIndex";
-      promotionToEdit.setTitre(pro.getTitre());
+      promotionToEdit.setTitre(promo.getTitre());
       promotionFacade.edit(promotionToEdit);
       promotionToEdit = new Promotion();
-      return "toIndex";
+      return "toIndexPromotion";
    }
 
    public void addMessage(String summary)
