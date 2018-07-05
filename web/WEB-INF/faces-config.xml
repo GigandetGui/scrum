@@ -20,6 +20,11 @@
             <to-view-id>/promotions/create.xhtml</to-view-id>
             <redirect></redirect>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>toEditPromotion</from-outcome>
+            <to-view-id>/promotions/edit.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
 
