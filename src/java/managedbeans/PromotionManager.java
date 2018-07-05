@@ -36,6 +36,7 @@ public class PromotionManager implements Serializable
    public void init()
    {
       promotionToAdd = new Promotion();
+      promotion = new Promotion();
    }
 
    public String createPromotion()
@@ -56,13 +57,11 @@ public class PromotionManager implements Serializable
    public String editPromotion(Promotion promo)
    {
       promotion = promo;
-      return "toShowPromotion";
+      return "toEditPromotion";
    }
    
-      public String updatePromotion(Promotion promo)
+   public String updatePromotion(Promotion promo)
    {
-//      promotionFacade.edit(promotion);
-//      return "toIndex";
       promotionToEdit.setTitre(promo.getTitre());
       promotionFacade.edit(promotionToEdit);
       promotionToEdit = new Promotion();
