@@ -9,39 +9,21 @@
     <div id="main">
         
 <p:megaMenu style="margin-top:20px">
-    <p:menuitem value="Promotions" outcome="toIndex" icon="ui-icon-user" />
-    <p:submenu label="JEROME" icon="ui-icon-check">
+    <p:submenu label="Promotions" icon="ui-icon-check">
         <p:column>
-            <p:submenu label="TV.1">
-                <p:menuitem value="TV.1.1" url="#" />
-                <p:menuitem value="TV.1.2" url="#" />
-            </p:submenu>
-            <p:submenu label="TV.2">
-                <p:menuitem value="TV.2.1" url="#" />
-                <p:menuitem value="TV.2.2" url="#" />
-                <p:menuitem value="TV.2.3" url="#" />
+            <p:submenu label="">
+             <p:menuitem value="Lister les promotions" outcome="toIndexPromotion" icon="ui-icon-user" />
             </p:submenu>
         </p:column>
  
         <p:column>
-            <p:submenu label="TV.4">
-                <p:menuitem value="TV.4.1" url="#" />
-                <p:menuitem value="TV.4.2" url="#" />
+            <p:submenu label="">
+            <p:menuitem value="Créer une promotion" outcome="toCreatePromotion" icon="ui-icon-user" />
             </p:submenu>
-            <p:submenu label="TV.5">
-                <p:menuitem value="TV.5.1" url="#" />
-                <p:menuitem value="TV.5.2" url="#" />
-                <p:menuitem value="TV.5.3" url="#" />
-            </p:submenu>
-        </p:column>
- 
-        <p:column>
-            <strong>Image</strong>
-            <p:graphicImage name="/demo/images/nature/nature1.jpg" width="200"/>
         </p:column>
     </p:submenu>
  
-    <p:submenu label="LE" icon="ui-icon-document">
+    <p:submenu label="Entreprise" icon="ui-icon-document">
  
         <p:column>
             <p:submenu label="Sports.1">
@@ -74,7 +56,7 @@
         </p:column>
     </p:submenu>
  
-    <p:submenu label="PLUS BEAU" icon="ui-icon-pencil">
+    <p:submenu label="Tuteur" icon="ui-icon-pencil">
         <p:column>
             <p:submenu label="Entertainment.1">
                 <p:menuitem value="Entertainment.1.1" url="#" />
