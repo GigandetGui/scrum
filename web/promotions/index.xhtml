@@ -16,10 +16,10 @@
                         <h:outputText value="#{promo.titre}" />
                     </p:column>
                     <p:column headerText="Modifier">
-                        <p:commandButton value="Modifier" action="#{entityManager.editPromotion(promo.id)}" styleClass="btn waves-effect waves-light blue" />
+                        <p:commandButton value="Modifier" action="#{promotionManager.editPromotion(promo)}" styleClass="btn waves-effect waves-light blue" />
                     </p:column>
                     <p:column headerText="Supprimer">
-                       <p:commandButton value="Supprimer" action="#{entityManager.editArticle(art.id)}" styleClass="btn waves-effect waves-light red" />
+                       <p:commandButton value="Supprimer" action="#{promotionManager.editArticle(art.id)}" styleClass="btn waves-effect waves-light red" />
                     </p:column>
                 </p:dataTable>
 
