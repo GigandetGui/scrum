@@ -38,7 +38,7 @@ public class PromotionManager implements Serializable
       promotionToAdd = new Promotion();
    }
 
-   public String createPromotion(ActionEvent actionEvent)
+   public String createPromotion()
    {
       promotionFacade.create(promotionToAdd);
       promotionToAdd = new Promotion();
