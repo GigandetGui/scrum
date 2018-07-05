@@ -57,7 +57,7 @@ public class PromotionManager implements Serializable
 
    public String editPromotion(Promotion promo)
    {
-      promotion = promo;
+      promotionToEdit = promo;
       return "toEditPromotion";
    }
    
@@ -112,4 +112,15 @@ public class PromotionManager implements Serializable
    {
       this.promotionToAdd = promotionToAdd;
    }
+
+   public Promotion getPromotionToEdit()
+   {
+      return promotionToEdit;
+   }
+
+   public void setPromotionToEdit(Promotion promotionToEdit)
+   {
+      this.promotionToEdit = promotionToEdit;
+   }
+   
 }
