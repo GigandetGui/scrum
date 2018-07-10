@@ -7,10 +7,18 @@ package javabeans;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import tools.LocalDateAttributeConverter;
 
@@ -24,8 +32,9 @@ public class Candidat implements Serializable {
 
     private static final long serialVersionUID = -5892169641074303723L;
     @Id
-    @Column(name = "idCandidat", nullable = false, length = 255)
-    private String idCandidat;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_candidat", nullable = false, length = 255)
+    private int idCandidat;
 
     @Column(name = "nom", nullable = false, length = 255)
     private String nom;
@@ -33,7 +42,7 @@ public class Candidat implements Serializable {
     @Column(name = "prenom", nullable = false, length = 255)
     private String prenom;
     
-    @Column(name = "codePostal", nullable = false, length = 5)
+    @Column(name = "code_postal", nullable = false, length = 5)
     private String codePostal;
     
     @Column(name = "ville", nullable = false, length = 255)
@@ -42,7 +51,7 @@ public class Candidat implements Serializable {
     @Column(name = "rue", nullable = false, length = 255)
     private String rue;
     
-    @Column(name = "dteNaissance", nullable = false, length = 255)
+    @Column(name = "dte_naissance", nullable = false, length = 255)
     @Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate dteNaissance;
     
@@ -55,13 +64,13 @@ public class Candidat implements Serializable {
     @Column(name = "email", nullable = false, length = 255)
     private String email;
 
-    @Column(name = "secuSocial", nullable = false, length = 15)
+    @Column(name = "secu_social", nullable = false, length = 15)
     private String secuSocial;
 
-    @Column(name = "permisA")
+    @Column(name = "permis_a")
     private Boolean permisA;
 
-    @Column(name = "permisB")
+    @Column(name = "permis_b")
     private Boolean permisB;    
 
     @Column(name = "voiture")
@@ -72,14 +81,34 @@ public class Candidat implements Serializable {
 
     @Column(name = "scooter")
     private Boolean scooter;   
+   
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Set<Promotion> promotions = new HashSet<Promotion>();
+    
+    
+    public Set<Promotion> getPromotions() {
+        return promotions;
+    }
 
-    @Column(name = "is_apprenti")
-    private Boolean is_apprenti;     
-
+    public void setPromotions(Set<Promotion> promotions) {
+        this.promotions = promotions;
+    }
+    
+    public void addPromotion(Promotion promotion) {
+        promotions.add(promotion);
+       promotion.getCandidats().add(this);
+    }
+ 
+    public void removePromotion(Promotion promotion) {
+        promotions.remove(promotion);
+        promotion.getCandidats().remove(this);
+    }
+    
     public Candidat() {
     }    
     
-    public Candidat(String idCandidat, String nom, String prenom, String codePostal, String ville, String rue, LocalDate dteNaissance, String tel, String portable, String email, String secuSocial, Boolean permisA, Boolean permisB, Boolean voiture, Boolean moto, Boolean scooter, Boolean is_apprenti) {
+    public Candidat(int idCandidat, String nom, String prenom, String codePostal, String ville, String rue, LocalDate dteNaissance, String tel, String portable, String email, String secuSocial, Boolean permisA, Boolean permisB, Boolean voiture, Boolean moto, Boolean scooter) {
         this.idCandidat = idCandidat;
         this.nom = nom;
         this.prenom = prenom;
@@ -96,14 +125,13 @@ public class Candidat implements Serializable {
         this.voiture = voiture;
         this.moto = moto;
         this.scooter = scooter;
-        this.is_apprenti = is_apprenti;
     }
 
-    public String getIdCandidat() {
+    public int getIdCandidat() {
         return idCandidat;
     }
 
-    public void setIdCandidat(String idCandidat) {
+    public void setIdCandidat(int idCandidat) {
         this.idCandidat = idCandidat;
     }
 
@@ -226,14 +254,28 @@ public class Candidat implements Serializable {
     public void setScooter(Boolean scooter) {
         this.scooter = scooter;
     }
+    
+       @Override
+   public boolean equals(Object o)
+   {
+      if (this == o)
+      {
+         return true;
+      }
+      if (!(o instanceof Promotion))
+      {
+         return false;
+      }
+      Candidat cand = (Candidat) o;
+      return Objects.equals(getIdCandidat(), cand.getIdCandidat());
+   }
 
-    public Boolean getIs_apprenti() {
-        return is_apprenti;
-    }
+   @Override
+   public int hashCode()
+   {
+      return Objects.hash(getIdCandidat());
+   }
 
-    public void setIs_apprenti(Boolean is_apprenti) {
-        this.is_apprenti = is_apprenti;
-    }
     
     
 }

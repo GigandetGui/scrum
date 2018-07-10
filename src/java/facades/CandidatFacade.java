@@ -17,12 +17,14 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class CandidatFacade extends AbstractFacade<Candidat> {
 
+    
     @PersistenceContext(unitName = "scrumPU")
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
+        
     }
 
     public CandidatFacade() {

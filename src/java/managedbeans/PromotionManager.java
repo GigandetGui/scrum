@@ -7,8 +7,10 @@ package managedbeans;
 
 import facades.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javabeans.Candidat;
 import javabeans.Promotion;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -18,9 +20,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 @ManagedBean
 @SessionScoped
+@Transactional
 public class PromotionManager implements Serializable
 {
 
@@ -29,8 +36,17 @@ public class PromotionManager implements Serializable
    private Promotion promotion;
    private Promotion promotionToAdd;
 
+    @PersistenceContext(unitName="scrumPU") private EntityManager em;
+   
+    //A SUPPRIMER APRES TEST 
+   private Candidat candidat;
+   
    @EJB
    private PromotionFacade promotionFacade;
+   
+//A SUPPRIMER APRES TEST 
+   @EJB
+   private CandidatFacade candidatFacade;
 
    @PostConstruct
    public void init()
@@ -40,9 +56,32 @@ public class PromotionManager implements Serializable
    }
 
    public String createPromotion()
-   {
+   {       
+       
       promotionFacade.create(promotionToAdd);
-      promotionToAdd = new Promotion();
+      
+       // TEST
+        //A SUPPRIMER APRES TEST 
+       candidat = new Candidat();
+       candidat.setCodePostal("25000");
+       candidat.setDteNaissance(LocalDate.now());
+       candidat.setEmail("dd@ff.fr");
+       candidat.setNom("GG");
+       candidat.setPrenom("dd");
+       candidat.setPortable("0661186152");
+       candidat.setRue("8 dsqdq");
+       candidat.setSecuSocial("2553212");
+       candidat.setTel("206050");
+       candidat.setVille("Besancon");
+       
+       candidat.getPromotions().add(promotionToAdd);
+       //candidat.addPromotion(promotionToAdd);
+       candidatFacade.create(candidat);
+       promotionFacade.edit(promotionToAdd);
+       //END TEST
+       
+      
+       promotionToAdd = new Promotion();
       addMessage("Promotion ajouté avec succès !");
       return "toIndexPromotion";
    }
