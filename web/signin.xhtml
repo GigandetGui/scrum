@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Login</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h3>Connexion</h3>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="email">E-Mail:</h:outputLabel>
+			<h:inputText id="email" value="#{loginView.email}" required="true"
+				requiredMessage="Indiquez votre adresse e-mail"></h:inputText>
+			<h:outputLabel for="password">Mot de passe</h:outputLabel>
+			<h:inputSecret id="password" value="#{loginView.password}"
+				required="true" requiredMessage="Indiquez votre mot de passe"></h:inputSecret>
+			<h:commandButton action="#{loginView.login}" value="Login"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+	<br />
+	<br />
+        <h:link value="Je souhaite déposer une candidature" outcome="signin" />
+        <br />
+        <br />
+	<h:link value="Create new account (pour test)" outcome="register" />
+</h:body>
+</html>
