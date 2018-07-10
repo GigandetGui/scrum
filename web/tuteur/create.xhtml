@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
+        
+    
+        <ui:define name="main_content">
+            <div id="main">
+                <h:form>   
+                    <h:outputLabel value="Nom du tuteur: "/>
+                    <h:inputText value="#{tuteurManager.tuteurToAdd.nom}"/>
+                    <h:message for="ajoutTuteur" showSummary="true" />
+                    <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Créer" action="#{tuteurManager.createTuteur}"/>
+                </h:form>
+            </div>
+        
+    </ui:define>
+    
+</ui:composition>

@@ -40,6 +40,21 @@
             <to-view-id>/entreprise/edit.xhtml</to-view-id>
             <redirect></redirect>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>toIndexTuteur</from-outcome>
+            <to-view-id>/tuteur/index.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toCreateTuteur</from-outcome>
+            <to-view-id>/tuteur/create.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toEditTuteur</from-outcome>
+            <to-view-id>/tuteur/edit.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
 

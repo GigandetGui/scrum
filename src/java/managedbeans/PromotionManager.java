@@ -27,7 +27,6 @@ import javax.transaction.Transactional;
 
 @ManagedBean
 @SessionScoped
-@Transactional
 public class PromotionManager implements Serializable
 {
 
@@ -36,8 +35,6 @@ public class PromotionManager implements Serializable
    private Promotion promotion;
    private Promotion promotionToAdd;
 
-    @PersistenceContext(unitName="scrumPU") private EntityManager em;
-   
     //A SUPPRIMER APRES TEST 
    private Candidat candidat;
    

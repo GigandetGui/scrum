@@ -8,54 +8,57 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-    <div id="main">
-        
-        <!-- Dropdown Structure -->
-        <ul id="promos" class="dropdown-content">
-          <li><h:link value="Créer une promotion" outcome="toCreatePromotion"/></li>
-          <li><a href="#!">two</a></li>
-          <li class="divider"></li>
-          <li><a href="#!">three</a></li>
-        </ul>
-        <ul id="entr" class="dropdown-content">
-          <li><h:link value="Créer une promotion" outcome="toCreateEntreprise"/></li>
-          <li><a href="#!">two</a></li>
-          <li class="divider"></li>
-          <li><a href="#!">three</a></li>
-        </ul>
-        <nav>
-          <div class="nav-wrapper blue">
-              <div class="container">
-            <a href="#!" class="brand-logo">Scrum</a>
-            <ul class="right hide-on-med-and-down">
-              <li><a class="dropdown-trigger" href="#!" data-activates="promos">Promotions<i class="material-icons right">arrow_drop_down</i></a></li>
-              <li><a class="dropdown-trigger" href="#!" data-activates="entr">Entreprises<i class="material-icons right">arrow_drop_down</i></a></li>
-              <li><h:link value="Promotions" outcome="toIndex" /></li>
-              <li><a href="badges.html">Components</a></li>
-              <!-- Dropdown Trigger -->
-            </ul>  
-              </div>
-          </div>
-        </nav>
-        
-        <div class="container" style="margin-top:40px">
-            
-        <ui:insert name="main_content"/>
-        
+        <div id="main">
+
+            <!-- Dropdown Structure -->
+            <ul id="cand" class="dropdown-content">
+                <li><h:link value="Créer un candidat" outcome="toCreateCandidat"/></li>
+                <li><h:link value="Lister les candidats" outcome="toIndexCandidat"/></li>
+            </ul>
+            <ul id="promos" class="dropdown-content">
+                <li><h:link value="Créer une promotion" outcome="toCreatePromotion"/></li>
+                <li><h:link value="Lister les promotion" outcome="toIndexPromotion"/></li>
+            </ul>
+            <ul id="entr" class="dropdown-content">
+                <li><h:link value="Créer une entreprise" outcome="toCreateEntreprise"/></li>
+                <li><h:link value="Lister les entreprises" outcome="toIndexEntreprise"/></li>
+            </ul>
+            <ul id="tut" class="dropdown-content">
+                <li><h:link value="Créer un tuteur" outcome="toCreateTuteur"/></li>
+                <li><h:link value="Lister les tuteurs" outcome="toIndexTuteur"/></li>
+            </ul>
+            <nav>
+                <div class="nav-wrapper blue">
+                    <div class="container">
+                        <a href="#!" class="brand-logo">ORA <span style="font-size:large ;" class="thin">- Organisation et Recrutement des Apprentis </span> </a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a class="dropdown-trigger" href="#!" data-activates="cand">Candidats<i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a class="dropdown-trigger" href="#!" data-activates="promos">Promotions<i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a class="dropdown-trigger" href="#!" data-activates="entr">Entreprises<i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a class="dropdown-trigger" href="#!" data-activates="tut">Tuteurs<i class="material-icons right">arrow_drop_down</i></a></li>
+                        </ul>  
+                    </div>
+
+                </div>
+            </nav>
+
+            <div class="container" style="margin-top:40px">
+
+                <ui:insert name="main_content"/>
+
+            </div>
         </div>
-    </div>
-        
-        
+
+
     </h:body>
-    
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-        <script>
-            $( document ).ready(function() {
-                $(".dropdown-trigger").dropdown();
-            
-            });
 
-        </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown-trigger").dropdown();
+
+        });
+
+    </script>
 </html>
-
