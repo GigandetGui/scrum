@@ -25,6 +25,21 @@
             <to-view-id>/promotions/edit.xhtml</to-view-id>
             <redirect></redirect>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>toIndexEntreprise</from-outcome>
+            <to-view-id>/entreprise/index.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toCreateEntreprise</from-outcome>
+            <to-view-id>/entreprise/create.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toEditEntreprise</from-outcome>
+            <to-view-id>/entreprise/edit.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
 
