@@ -11,6 +11,7 @@ import javabeans.User;
 import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
@@ -19,6 +20,7 @@ import javax.inject.Inject;
 import managedbeans.UserEJB;
 
 @SessionScoped
+//@ApplicationScoped 
 @Named
 public class RegisterView implements Serializable {
 
@@ -50,23 +52,28 @@ public class RegisterView implements Serializable {
         if (!password.equals(confirmPassword)) {
             FacesMessage msg = new FacesMessage("Confirm password does not match password");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            facesContext.addMessage(passwordId, msg);
-            facesContext.renderResponse();
-        }
-        if (userEJB.findUserById(email) != null) {
-            FacesMessage msg = new FacesMessage("User with this e-mail already exists");
-            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            facesContext.addMessage(passwordId, msg);
+            facesContext.addMessage("register", msg);
             facesContext.renderResponse();
         }
     }
 
     public String register() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        if (userEJB.findUserById(email) != null) {
+            FacesMessage msg = new FacesMessage("User with this e-mail already exists");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            facesContext.addMessage("register", msg);
+            facesContext.renderResponse();
+            return "";
+        }
+        else
+        {
         User user = new User(email, password, name, firstname);
         userEJB.createUser(user);
         log.info("New user created with e-mail: " + email + " and name: " + name);
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "regdone";
+        }
     }
 
     public String getName() {

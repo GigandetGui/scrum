@@ -45,7 +45,7 @@ public class LoginView implements Serializable {
         try {
             request.login(email, password);
         } catch (ServletException e) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed!", null));
+            context.addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed!", null));
             return "signin";
         }
 
@@ -63,6 +63,7 @@ public class LoginView implements Serializable {
                return "toIndexPromotion";
         } else {
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+            context.addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed! Vous n'êtes pas du groupe RD, donc non autorisé.", null));
             return "signin";
         }
     }
