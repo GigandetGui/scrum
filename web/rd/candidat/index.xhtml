@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="main_content">
+        <div id="main">
+            <h:form>
+                <ui:insert name="form_content" />
+
+                <p:dataTable tableStyleClass="table striped centered" var="candi" value="#{candidatManager.candidats}" id="updateMe">
+                    <p:column headerText="Titre">
+                        <h:outputText value="#{candi.nom} " />
+                        <h:outputText value="#{candi.prenom}" />
+                    </p:column>
+                    <p:column headerText="Modifier">
+                        <p:commandButton value="Modifier" action="#{candidatManager.editCandidat(candi)}" styleClass="btn waves-effect waves-light blue" />
+                    </p:column>
+                    <p:column headerText="Supprimer">
+                        <p:growl id="candidatGrowl" life="2000" />
+                        <p:commandButton value="Supprimer" ajax="true" update="candidatGrowl,updateMe" actionListener="#{candidatManager.deleteCandidat(candi)}" styleClass="btn waves-effect waves-light red" />
+                    </p:column>
+                </p:dataTable>
+
+            </h:form>
+        </div>
+        <script>
+            
+       $( "button" ).removeClass( "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" ) 
+       
+        </script>
+    </ui:define>
+
+</ui:composition>
+

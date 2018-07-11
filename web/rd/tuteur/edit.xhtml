@@ -7,8 +7,18 @@
         <ui:define name="main_content">
             <div id="main">
                 <h:form>   
-                    <h:outputLabel value="Nom : "/>
+                    <h:outputLabel value="Nom du tuteur: "/>
                     <h:inputText value="#{tuteurManager.tuteurToEdit.nom}"/>
+                    <h:outputLabel value="Prenom: "/>
+                    <h:inputText value="#{tuteurManager.tuteurToEdit.prenom}"/>
+                    <h:outputLabel value="Date de naissance "/>
+                    <h:inputText value="#{tuteurManager.tuteurToEdit.dteNaissance}"/>
+                    <h:outputLabel value="Telephone fixe: "/>
+                    <h:inputText value="#{tuteurManager.tuteurToEdit.tel}"/>
+                    <h:outputLabel value="Telephone portable "/>
+                    <h:inputText value="#{tuteurManager.tuteurToEdit.portable}"/>
+                    <h:outputLabel value="Email :"/>
+                    <h:inputText value="#{tuteurManager.tuteurToEdit.email}"/>                    
                     <h:message for="editPromotion" showSummary="true" />
                     <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Modifier" action="#{tuteurManager.updateTuteur(tuteurManager.tuteurToEdit)}"/>
                 </h:form>

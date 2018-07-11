@@ -1,4 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
@@ -9,8 +10,18 @@
                 <h:form>   
                     <h:outputLabel value="Nom du tuteur: "/>
                     <h:inputText value="#{tuteurManager.tuteurToAdd.nom}"/>
+                    <h:outputLabel value="Prenom: "/>
+                    <h:inputText value="#{tuteurManager.tuteurToAdd.prenom}"/>
+                    <h:outputLabel value="Date de naissance format : dd-MM-yyyy"/>
+                    <h:inputText value="#{dteNaissance}"/>
+                    <h:outputLabel value="Telephone fixe: "/>
+                    <h:inputText value="#{tuteurManager.tuteurToAdd.tel}"/>
+                    <h:outputLabel value="Telephone portable "/>
+                    <h:inputText value="#{tuteurManager.tuteurToAdd.portable}"/>
+                    <h:outputLabel value="Email :"/>
+                    <h:inputText value="#{tuteurManager.tuteurToAdd.email}"/>                    
                     <h:message for="ajoutTuteur" showSummary="true" />
-                    <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Créer" action="#{tuteurManager.createTuteur}"/>
+                    <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Créer" action="#{tuteurManager.createTuteur(dteNaissance)}"/>
                 </h:form>
             </div>
         

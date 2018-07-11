@@ -11,6 +11,21 @@
             <redirect></redirect>
         </navigation-case>
         <navigation-case>
+            <from-outcome>toIndexCandidat</from-outcome>
+            <to-view-id>rd/candidat/index</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toCreateCandidat</from-outcome>
+            <to-view-id>rd/candidat/create.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>toEditCandidat</from-outcome>
+            <to-view-id>rd/candidat/edit.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>toIndexPromotion</from-outcome>
             <to-view-id>rd/promotions/index.xhtml</to-view-id>
             <redirect></redirect>

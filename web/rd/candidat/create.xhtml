@@ -1,0 +1,193 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/layout.xhtml" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+        
+    
+        <ui:define name="main_content">
+            <div id="main">
+        
+        <h:messages errorStyle="color:red;"/>
+
+        
+
+        
+                <h:form>
+            <h3>Candidat</h3>
+                                <div class="row">
+                <div class="input-field col s12">
+                    <p:inputText id="nom" value="#{formulaireCandidature.nom}">
+                        <p:keyFilter regEx="/[A-Z]/i"/>
+                    </p:inputText>
+                  <h:outputLabel for="nom" value="Nom"/>  
+            </div>
+            </div>
+            <h:panelGrid columns="2">
+
+
+
+                <h:outputText value="Prenom"/>   
+                <p:inputText id="prenom" value="#{formulaireCandidature.prenom}">
+                    <p:keyFilter regEx="/[A-Z]/i"/>
+                </p:inputText>
+
+                <h:outputText value="Rue"/>   
+                <p:inputTextarea rows="2" id="rue" value="#{formulaireCandidature.rue}">
+                    <p:keyFilter regEx="/[A-Z]/i"/>
+                </p:inputTextarea>
+
+                <h:outputText value="Code Postale"/>
+                <p:inputMask id="codePostal" value="#{formulaireCandidature.codePostal}" mask="99 999"/>
+
+                <h:outputText value="Ville"/>   
+                <p:inputText id="ville" value="#{formulaireCandidature.ville}">
+                    <p:keyFilter regEx="/[A-Z]/i"/>
+                </p:inputText>
+
+                <h:outputText value="Date de Naissance"/>
+                <p:inputMask id="dteNaissance" value="#{formulaireCandidature.dateDeNaissance}" mask="99/99/9999"/>
+
+                <h:outputText value="Téléphone fixe"/>
+                <p:inputMask id="tel" value="#{formulaireCandidature.tel}" mask="99.99.99.99.99"/>
+
+                <h:outputText value="Téléphone portable"/>
+                <p:inputMask id="portable" value="#{formulaireCandidature.portable}" mask="99.99.99.99.99"/>
+
+                <h:outputLabel value="E-mail:" for="email" />
+                <p:inputText id="email" value="#{formulaireCandidature.email}" title="Email"/>
+
+                <h:outputText value="N° Sécurité Sociale"/>
+                <p:inputMask id="secuSocial" value="#{formulaireCandidature.secuSocial}" mask="9 99 99 99 999 999 99"/>
+            </h:panelGrid> 
+
+            <h3>Projet</h3>
+            <h:panelGrid columns="2">
+
+                <h:outputLabel for="diplome" value="Diplome" />
+                <p:selectCheckboxMenu id="projet" value="#{formulaireCandidature.projet}" label="Promotion"
+                                      filter="true" filterMatchMode="startsWith">
+                    <f:selectItems value="#{formulaireCandidature.lesPromotions}"/>
+                </p:selectCheckboxMenu>
+            </h:panelGrid> 
+
+            <h3>Etudes/ Situation professionnelle</h3>
+            <h:panelGrid columns="2">
+
+                <h:outputText value="Diplome le plus récent"/>
+                <p:inputText id="actuelle" value="#{formulaireCandidature.actuelle}" />
+
+                <h:outputText value="Etablissement (et lieu)"/>
+                <p:inputText id="etablissement" value="#{formulaireCandidature.etablissement}" />
+
+                <h:outputText value="Etat du diplome"/>
+                <h:panelGrid columns="5">
+                    <p:selectBooleanButton id="diplome" value="#{formulaireCandidature.diplome}" onLabel="obtenu" offLabel="prepare" style="width:100px"/>
+                    <p:inputText id="commentaire" value="#{formulaireCandidature.commentaire}" />
+                </h:panelGrid>
+            </h:panelGrid>  
+
+            <h3>Mobilité</h3>
+            <h:panelGrid id="panelMobilite" columns="4">
+
+                <h:outputText value="Permis voiture: "/>
+                <p:selectBooleanButton id="permisB" value="#{formulaireCandidature.permisB}" onLabel="Oui" offLabel="Non" style="width:60px"/>
+
+                <h:outputText value="Voiture: "/>
+                <p:selectBooleanButton id="voiture" value="#{formulaireCandidature.voiture}" onLabel="Oui" offLabel="Non" style="width:60px"/>
+
+                <h:outputText value="Permis moto: "/>
+                <p:selectBooleanButton id="permisA" value="#{formulaireCandidature.permisA}" onLabel="Oui" offLabel="Non" style="width:60px"/>
+
+                <h:outputText value="Moto: "/>
+                <p:selectBooleanButton id="moto" value="#{formulaireCandidature.moto}" onLabel="Oui" offLabel="Non" style="width:60px"/>
+
+                <h:outputText value="Scooter: "/>
+                <p:selectBooleanButton id="scooter" value="#{formulaireCandidature.scooter}" onLabel="Oui" offLabel="Non" style="width:60px"/>
+
+            </h:panelGrid>  
+
+
+            <h3>Dossier Scolaire</h3>
+            <h:panelGrid columns="1">
+
+                <h:outputText value="Matières générales"/>
+                <p:inputText id="ds1" value="#{formulaireCandidature.ds1}"/>
+                <p:slider for="ds1" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Matières techniques"/>
+                <p:inputText id="ds2" value="#{formulaireCandidature.ds2}"/>
+                <p:slider for="ds2" minValue="1" maxValue="7" />
+
+                <h:outputText value="Assiduité / Comportement"/>
+                <p:inputText id="ds3" value="#{formulaireCandidature.ds3}"/>
+                <p:slider for="ds3" minValue="1" maxValue="7" />
+
+                <h:outputText value="Observation"/>   
+                <p:inputTextarea rows="2" id="observationScolaire" value="#{formulaireCandidature.observationScolaire}"/>
+
+            </h:panelGrid>  
+
+
+            <h3>Entretien</h3>
+            <h:panelGrid columns="1">
+
+                <h:outputText value="Ouverture d'esprit"/>
+                <p:inputText id="e1" value="#{formulaireCandidature.e1}"/>
+                <p:slider for="e1" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Aisance relationnelle, confiance en soi"/>
+                <p:inputText id="e2" value="#{formulaireCandidature.e2}"/>
+                <p:slider for="e2" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Choix du métier / connaissance de la formation"/>
+                <p:inputText id="e3" value="#{formulaireCandidature.e3}"/>
+                <p:slider for="e3" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Connaissance de l'apprentissage et de ses contraintes"/>
+                <p:inputText id="e4" value="#{formulaireCandidature.e4}"/>
+                <p:slider for="e4" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Degré de motivation"/>
+                <p:inputText id="e5" value="#{formulaireCandidature.e5}"/>
+                <p:slider for="e5" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Approche pour la recherche d'entreprise"/>
+                <p:inputText id="e6" value="#{formulaireCandidature.e6}"/>
+                <p:slider for="e6" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Prédispositions techniques"/>
+                <p:inputText id="e7" value="#{formulaireCandidature.e7}"/>
+                <p:slider for="e7" minValue="1" maxValue="7"/>
+
+                <h:outputText value="Observation"/>   
+                <p:inputTextarea rows="2" id="observationEntretien" value="#{formulaireCandidature.observationEntretien}"/>
+
+            </h:panelGrid>  
+
+
+            <h3>Conclusion</h3>
+            <h:panelGrid columns="1">
+
+                <h:outputText value="Ressenti par rapport à la candidature, points forts, points faibles, adéquation avec la formation envisagée, ..."/>   
+                <p:inputTextarea rows="3" id="conclusion" value="#{formulaireCandidature.conclusion}"/>
+
+                <h:outputText value="AVIS"/>
+                <h:panelGrid columns="6">
+                    <p:selectOneRadio id="avis" value="#{formulaireCandidature.avis}">
+                        <f:selectItem itemLabel="Favorable" itemValue="favorable" />
+                        <f:selectItem itemLabel="Réservé" itemValue="reserve"/>      
+                        <f:selectItem itemLabel="Défavorable" itemValue="defavorable"/> 
+                    </p:selectOneRadio>
+                </h:panelGrid>
+
+            </h:panelGrid>
+
+            <h:commandButton value="Valider" action="#{formulaireCandidature.testLudovic()}"/>
+
+        </h:form>
+
+            </div>
+        
+    </ui:define>
+    
+</ui:composition>
