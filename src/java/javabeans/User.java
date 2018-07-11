@@ -1,11 +1,14 @@
 package javabeans;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +33,9 @@ public class User implements Serializable {
     @Column(name = "firstname", nullable = true, length = 30)
     private String firstname;
 
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="user")
+    private List<Promotion> promotions;
+    
     public User() {
     }
 
@@ -77,5 +83,15 @@ public class User implements Serializable {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
+
+    public List<Promotion> getPromotions() {
+        return promotions;
+    }
+
+    public void setPromotions(List<Promotion> promotions) {
+        this.promotions = promotions;
+    }
+    
+    
 
 }

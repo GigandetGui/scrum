@@ -24,6 +24,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import tools.LocalDateAttributeConverter;
@@ -39,6 +40,9 @@ public class Promotion implements Serializable
    private int id;
    @Column(name = "titre_promotion")
    private String titre;
+   
+    @ManyToOne
+    private User user;
    
    @ManyToMany(mappedBy = "promotions", fetch = FetchType.LAZY)
     private Set<Candidat> candidats = new HashSet<Candidat>();
@@ -60,6 +64,8 @@ public class Promotion implements Serializable
     public void setCandidats(Set<Candidat> candidats) {
         this.candidats = candidats;
     }
+    
+    
     
     
     
@@ -95,17 +101,14 @@ public class Promotion implements Serializable
    {
       this.titre = titre;
    }
-   
-//
-//   public List<Candidat> getCommentaires()
-//   {
-//      return candidats;
-//   }
-//
-//   public void setCommentaires(List<Candidat> commentaires)
-//   {
-//      this.candidats = commentaires;
-//   }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
    @Override
    public boolean equals(Object o)

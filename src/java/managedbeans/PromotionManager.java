@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javabeans.Candidat;
 import javabeans.Promotion;
+import javabeans.User;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
@@ -24,6 +25,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import views.LoginView;
 
 @ManagedBean
 @SessionScoped
@@ -54,11 +56,13 @@ public class PromotionManager implements Serializable
 
    public String createPromotion()
    {       
-       
+       User user = LoginView.getAuthenticatedUser();
+      promotionToAdd.setUser(user);
+      user.getPromotions().add(promotionToAdd);
       promotionFacade.create(promotionToAdd);
       
        // TEST
-        //A SUPPRIMER APRES TEST 
+       //A SUPPRIMER APRES TEST 
        candidat = new Candidat();
        candidat.setCodePostal("25000");
        candidat.setDteNaissance(LocalDate.now());
@@ -83,11 +87,13 @@ public class PromotionManager implements Serializable
       return "toIndexPromotion";
    }
 
-   public void deletePromotion(Promotion promo)
+   public String deletePromotion(Promotion promo)
    {
       promotionFacade.remove(promo);
       promotions.remove(promo);
+      
       addMessage("Promotion supprimée avec succès !");
+      return "toIndexPromotion";
    }
 
 
@@ -114,8 +120,23 @@ public class PromotionManager implements Serializable
    public List<Promotion> getPromotions()
    {
       try
-      {
+      { 
          promotions = promotionFacade.findAll();
+         return promotions;
+
+      } catch (EJBException ee)
+      {
+         return promotions = new ArrayList<>();
+      }
+   }
+   
+      public List<Promotion> getPromotionsAuthenticatedUser()
+   {
+      try
+      { 
+          User user = LoginView.getAuthenticatedUser();
+          promotions = user.getPromotions();
+         //promotions = promotionFacade.findAll();
          return promotions;
 
       } catch (EJBException ee)

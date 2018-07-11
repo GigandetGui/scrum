@@ -1,28 +1,89 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<title>Login</title>
-</h:head>
-<h:body>
-	<h:form>
-		<h3>Connexion</h3>
-		<h:panelGrid columns="2">
-			<h:outputLabel for="email">E-Mail:</h:outputLabel>
-			<h:inputText id="email" value="#{loginView.email}" required="true"
-				requiredMessage="Indiquez votre adresse e-mail"></h:inputText>
-			<h:outputLabel for="password">Mot de passe</h:outputLabel>
-			<h:inputSecret id="password" value="#{loginView.password}"
-				required="true" requiredMessage="Indiquez votre mot de passe"></h:inputSecret>
-			<h:commandButton action="#{loginView.login}" value="Login"></h:commandButton>
-		</h:panelGrid>
-                <h:messages id="login"/>
-	</h:form>
-	<br />
-	<br />
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />   
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+  <style>
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #2196F3 !important;
+    }
+
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #2196F3 !important;
+      box-shadow: none;
+    }
+  </style>
+        <h:form>
+            <center>
+                <h2 style="font-weight: 600" class="blue-text">ORA</h2>
+                <h5 class="thin center">Organisation et Recrutement des Apprentis</h5>
+                <div class="section"></div>
+
+                <h5 class="blue-text">Connexion à la plateforme</h5>
+
+                <div class="section"></div>
+
+                <div class="container">
+                    <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+                     
+                            <div class='row'>
+                                <div class='col s12'>
+                                </div>
+                            </div>
+
+                            <div class='row'>
+                                <div class='input-field col s12'>
+                                    <h:inputText id="email" value="#{loginView.email}" required="true"
+                             requiredMessage="Indiquez votre adresse e-mail"></h:inputText>
+                                    <label for='email'>Adresse email</label>
+                                </div>
+                            </div>
+
+                            <div class='row'>
+                                <div class='input-field col s12'>
+                                                    <h:inputSecret id="password" value="#{loginView.password}"
+                               required="true" requiredMessage="Indiquez votre mot de passe"></h:inputSecret>
+                                    <label for='password'>Mot de passe</label>
+                                </div>
+                                <label style='float: right;'>
+                                    <a class='blue-text' href='#!'><b>Forgot Password?</b></a>
+                                </label>
+                            </div>
+
+                            <br />
+                            <center>
+                                <div class='row'>
+                                     <h:commandButton class='col s12 btn btn-large waves-effect blue' action="#{loginView.login}" value="Login"></h:commandButton>
+                                </div>
+                            </center>
+                      
+                    </div>
+                </div>
+               <h:link value="Créer un compte" outcome="register" />
+            </center>
+        </h:form>
+        <br />
+        <br />
         <h:link value="Je souhaite déposer une candidature" outcome="signin" />
         <br />
         <br />
-	<h:link value="Create new account (pour test)" outcome="register" />
-</h:body>
+       
+        <h:messages id="login"/>
+
+    </h:body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </html>

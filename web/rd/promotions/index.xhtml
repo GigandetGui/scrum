@@ -2,14 +2,12 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
-
-
+    
     <ui:define name="main_content">
         <div id="main">
             <h:form>
                 <ui:insert name="form_content" />
-
-                <p:dataTable tableStyleClass="table striped centered" var="promo" value="#{promotionManager.promotions}" id="updateMe">
+                <p:dataTable tableStyleClass="table striped centered" var="promo" value="#{promotionManager.getPromotionsAuthenticatedUser()}" id="updateMe">
                     <p:column headerText="Titre">
                         <h:outputText value="#{promo.titre}" />
                     </p:column>
@@ -18,7 +16,7 @@
                     </p:column>
                     <p:column headerText="Supprimer">
                         <p:growl id="promotionGrowl" life="2000" />
-                      <p:commandButton value="Supprimer" ajax="true" update="promotionGrowl,updateMe" actionListener="#{promotionManager.deletePromotion(promo)}" styleClass="btn waves-effect waves-light red" />
+                      <p:commandButton value="Supprimer" action="#{promotionManager.deletePromotion(promo)}" styleClass="btn waves-effect waves-light red" />
                     </p:column>
                 </p:dataTable>
 
@@ -27,6 +25,8 @@
         <script>
             
        $( "button" ).removeClass( "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" ) 
+       $('table th').removeClass("ui-state-default");
+        $('.ui-datatable').removeClass();
        
         </script>
     </ui:define>

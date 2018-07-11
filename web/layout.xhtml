@@ -41,7 +41,7 @@
                             <li><a class="dropdown-trigger" href="#!" data-activates="promos">Promotions<i class="material-icons right">arrow_drop_down</i></a></li>
                             <li><a class="dropdown-trigger" href="#!" data-activates="entr">Entreprises<i class="material-icons right">arrow_drop_down</i></a></li>
                             <li><a class="dropdown-trigger" href="#!" data-activates="tut">Tuteurs<i class="material-icons right">arrow_drop_down</i></a></li>
-                            <c:if test = "#{loginView.authenticatedUser.email.length() > 0}">
+                            <c:if test = "#{loginView.getAuthenticatedUser().email.length() > 0}">
                                 <li>
                                 <h:form>
                                         <h:commandLink action="#{loginView.logout}" value="Logout" />

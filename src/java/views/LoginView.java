@@ -36,7 +36,7 @@ public class LoginView implements Serializable {
     private String email;
     private String password;
 
-    private User user;
+    private static User user;
 
     public String login() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -84,7 +84,7 @@ public class LoginView implements Serializable {
         return "/signin?faces-redirect=true";
     }
 
-    public User getAuthenticatedUser() {
+    public static User getAuthenticatedUser() {
         return user;
     }
 
