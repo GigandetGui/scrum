@@ -1,19 +1,28 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
-        
-    
-        <ui:define name="main_content">
-            <div id="main">
-                <h:form>   
-                    <h:outputLabel value="Nom : "/>
-                    <h:inputText value="#{entrepriseManager.entrepriseToAdd.nom}"/>
-                    <h:message for="ajoutEntreprise" showSummary="true" />
-                    <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Créer" action="#{entrepriseManager.createEntreprise}"/>
-                </h:form>
-            </div>
-        
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="main_content">
+        <div id="main">
+            <h:form>   
+                <h:outputLabel value="Nom de l'entreprise : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToAdd.nom}"/>
+                <h:outputLabel value="Nombre employe : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToAdd.nombreEmploye}"/>
+                <h:outputLabel value="Statut juridique : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToAdd.statutJuridique}"/>
+                <h:outputLabel value="Code postal : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToAdd.codePostal}"/> 
+                <h:outputLabel value="Ville : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToAdd.ville}"/> 
+                
+                <h:message for="ajoutEntreprise" showSummary="true" />
+                <p:commandButton styleClass="waves-effect waves-light btn-large blue" value="Créer l'entreprise" action="#{entrepriseManager.createEntreprise}"/>
+            </h:form>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </ui:define>
-    
+
 </ui:composition>

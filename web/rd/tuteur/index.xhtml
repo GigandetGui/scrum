@@ -10,25 +10,31 @@
                 <ui:insert name="form_content" />
 
                 <p:dataTable tableStyleClass="table striped centered" var="tut" value="#{tuteurManager.tuteurs}" id="updateMe">
-                    <p:column headerText="Nom">
-                        <h:outputText value="#{tut.nom}" />
+                    <p:column headerText="Nom - Prénom">
+                        <h:outputText value="#{tut.nom} #{tut.prenom}" />
+                    </p:column>
+                    <p:column headerText="Entreprise">
+                        <h:outputText value="#{tut.entreprise.nom}" />
                     </p:column>
                     <p:column headerText="Modifier">
                         <p:commandButton value="Modifier" action="#{tuteurManager.editTuteur(tut)}" styleClass="btn waves-effect waves-light blue" />
                     </p:column>
                     <p:column headerText="Supprimer">
                         <p:growl id="tuteurGrowl" life="2000" />
-                      <p:commandButton value="Supprimer" ajax="true" update="tuteurGrowl,updateMe" actionListener="#{tuteurManager.deleteTuteur(tut)}" styleClass="btn waves-effect waves-light red" />
+                      <p:commandButton value="Supprimer"  action="#{tuteurManager.deleteTuteur(tut)}" styleClass="btn waves-effect waves-light red" />
                     </p:column>
                 </p:dataTable>
 
             </h:form>
         </div>
-        <script>
+                <script>
             
        $( "button" ).removeClass( "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" ) 
+       $('table th').removeClass("ui-state-default");
+        $('.ui-datatable').removeClass();
        
         </script>
+
     </ui:define>
 
 </ui:composition>

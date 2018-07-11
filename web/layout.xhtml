@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
-       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />   
@@ -28,14 +28,12 @@
                 <li><h:link value="Créer un tuteur" outcome="toCreateTuteur"/></li>
                 <li><h:link value="Lister les tuteurs" outcome="toIndexTuteur"/></li>
             </ul>
-            
-           
-           
-            
+
+
             <nav>
                 <div class="nav-wrapper blue">
                     <div class="container">
-                        <a href="#!" class="brand-logo">ORA <span style="font-size:large ;" class="thin">- Organisation et Recrutement des Apprentis </span> </a>
+                        <h:link outcome="toIndexPromotion"><span style='font-weight:600;font-size:20px'>ORA</span> <span style="font-size:large ;" class="thin">- Organisation et Recrutement des Apprentis </span></h:link>
                         <ul class="right hide-on-med-and-down">
                             <li><a class="dropdown-trigger" href="#!" data-activates="cand">Candidats<i class="material-icons right">arrow_drop_down</i></a></li>
                             <li><a class="dropdown-trigger" href="#!" data-activates="promos">Promotions<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -43,12 +41,12 @@
                             <li><a class="dropdown-trigger" href="#!" data-activates="tut">Tuteurs<i class="material-icons right">arrow_drop_down</i></a></li>
                             <c:if test = "#{loginView.getAuthenticatedUser().email.length() > 0}">
                                 <li>
-                                <h:form>
+                                    <h:form>
                                         <h:commandLink action="#{loginView.logout}" value="Logout" />
-                                </h:form>
+                                    </h:form>
                                 </li>
                             </c:if>
-                           
+
                         </ul>  
                     </div>
 
@@ -59,14 +57,30 @@
 
                 <ui:insert name="main_content"/>
 
- 
             </div>
+            <footer class="page-footer blue" style="bottom:0;position:fixed;width:100%">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12">
+                            <h5 class="white-text">Ora</h5>
+                            <p class="grey-text text-lighten-4">Organisation et Recrutement des Apprentis</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2014 Copyright Text
+                        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                    </div>
+                </div>
+            </footer>
         </div>
 
 
     </h:body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script>
         $(document).ready(function () {

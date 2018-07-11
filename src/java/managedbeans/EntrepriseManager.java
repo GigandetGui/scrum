@@ -47,11 +47,13 @@ public class EntrepriseManager implements Serializable
       return "toIndexEntreprise";
    }
 
-   public void deleteEntreprise(Entreprise entr)
+   public String deleteEntreprise(Entreprise entr)
    {
       entrepriseFacade.remove(entr);
       entreprises.remove(entr);
       addMessage("Entreprise supprimée avec succès !");
+      
+      return "toIndexEntreprise";
    }
 
 

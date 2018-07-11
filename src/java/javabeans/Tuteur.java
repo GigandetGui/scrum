@@ -8,16 +8,15 @@ package javabeans;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import tools.LocalDateAttributeConverter;
 
@@ -45,6 +44,10 @@ public class Tuteur implements Serializable {
 
     @Column(name = "email", nullable=true, length = 255)
     private String email;
+    
+    @ManyToOne
+    @JoinColumn(name="fk_entreprise")
+    private Entreprise entreprise;
 
 //   @OneToMany(cascade = CascadeType.ALL, mappedBy = "promotion")
 //   private List<Candidat> candidats;
@@ -52,7 +55,7 @@ public class Tuteur implements Serializable {
 
     }
 
-    public Tuteur(int id, String nom, String prenom, LocalDate dteNaissance, String tel, String portable, String email) {
+    public Tuteur(int id, String nom, String prenom, LocalDate dteNaissance, String tel, String portable, String email, Entreprise entreprise) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -60,7 +63,10 @@ public class Tuteur implements Serializable {
         this.tel = tel;
         this.portable = portable;
         this.email = email;
+        this.entreprise = entreprise;
     }
+
+    
 
     public int getId() {
         return id;
@@ -86,12 +92,17 @@ public class Tuteur implements Serializable {
         this.prenom = prenom;
     }
 
-    public LocalDate getDteNaissance() {
-        return dteNaissance;
+    /* public String getDteNaissance() {
+        return dteNaissance.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }*/
+    
+    public String getDteNaissance(){
+        return dteNaissance.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
-    public void setDteNaissance(LocalDate dteNaissance) {
-        this.dteNaissance = dteNaissance;
+    public void setDteNaissance(String dteNaissance) {
+        
+        this.dteNaissance = LocalDate.parse(dteNaissance,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
     public String getTel() {
@@ -116,6 +127,14 @@ public class Tuteur implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
     }
 
    

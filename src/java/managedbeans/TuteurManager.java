@@ -7,6 +7,7 @@ package managedbeans;
 
 import facades.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javabeans.Tuteur;
@@ -39,19 +40,21 @@ public class TuteurManager implements Serializable
       tuteur = new Tuteur();
    }
 
-   public String createTuteur()
+   public String createTuteur(String dte)
    {
+       tuteurToAdd.setDteNaissance(dte);
       tuteurFacade.create(tuteurToAdd);
       tuteurToAdd = new Tuteur();
       addMessage("Tuteur ajouté avec succès !");
       return "toIndexTuteur";
    }
 
-   public void deleteTuteur(Tuteur tut)
+   public String deleteTuteur(Tuteur tut)
    {
       tuteurFacade.remove(tut);
       tuteurs.remove(tut);
       addMessage("Tuteur supprimée avec succès !");
+      return "toIndexTuteur";
    }
 
 

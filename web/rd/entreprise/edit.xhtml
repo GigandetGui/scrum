@@ -1,19 +1,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
-        
-    
-        <ui:define name="main_content">
-            <div id="main">
-                <h:form>   
-                    <h:outputLabel value="Nom : "/>
-                    <h:inputText value="#{entrepriseManager.entrepriseToEdit.nom}"/>
-                    <h:message for="editPromotion" showSummary="true" />
-                    <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Modifier" action="#{entrepriseManager.updateEntreprise(entrepriseManager.entrepriseToEdit)}"/>
-                </h:form>
-            </div>
-        
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="main_content">
+        <div id="main">
+            <h:form>   
+                <h:outputLabel value="Nom de l'entreprise : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToEdit.nom}"/>
+                <h:outputLabel value="Nombre employe : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToEdit.nombreEmploye}"/>
+                <h:outputLabel value="Statut juridique : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToEdit.statutJuridique}"/>
+                <h:outputLabel value="Code postal : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToEdit.codePostal}"/> 
+                <h:outputLabel value="Ville : "/>
+                <h:inputText value="#{entrepriseManager.entrepriseToEdit.ville}"/> 
+                <h:message for="editPromotion" showSummary="true" />
+                <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Modifier" action="#{entrepriseManager.updateEntreprise(entrepriseManager.entrepriseToEdit)}"/>
+            </h:form>
+        </div>
+
     </ui:define>
-    
+
 </ui:composition>

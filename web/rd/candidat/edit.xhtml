@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/layout.xhtml" xmlns:p="http://primefaces.org/ui">
+        
+    
+        <ui:define name="main_content">
+            <div id="main">
+                <h:form>   
+                    <h:outputLabel value="Nom : "/>
+                    <h:inputText value="#{candidatManager.candidatToEdit.nom}"/>
+                    <h:outputLabel value="Prénom : "/>
+                    <h:inputText value="#{candidatManager.candidatToEdit.prenom}"/>
+                    <h:message for="editCandidat" showSummary="true" />
+                    <h:commandButton styleClass="waves-effect waves-light btn-large blue" value="Modifier" action="#{candidatManager.updateCandidat(candidatManager.candidatToEdit)}"/>
+                </h:form>
+            </div>
+        
+    </ui:define>
+    
+</ui:composition>
