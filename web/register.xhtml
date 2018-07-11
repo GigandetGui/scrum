@@ -28,8 +28,8 @@
                 <h:inputSecret id="password" value="#{registerView.password}"
                                required="true" requiredMessage="Please enter password"
                                validatorMessage="Password must contain atleast one lowercase character, 
-                               uppercase character, a digit and it's length must be between 10 and 20 characters">
-                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{10,20})" />
+                               uppercase character, a digit and it's length must be between 10 and 20 characters. Caractères spéciaux authorisé: @#$%!+=*/.:;,§£µ\`~^¨">
+                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!+=*/.:;,§£µ\`~^¨]).{10,20})" />
                 </h:inputSecret>
                 <h:outputLabel for="confirmpassword">Confirm password:</h:outputLabel>
                 <h:inputSecret id="confirmpassword"
@@ -37,6 +37,7 @@
                                requiredMessage="Please confirm your password"></h:inputSecret>
                 <h:commandButton action="#{registerView.register}" value="Register"></h:commandButton>
             </h:panelGrid>
+             <h:messages id="register"/>
         </h:form>
         <br />
         <br />
