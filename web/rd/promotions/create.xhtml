@@ -7,9 +7,9 @@
         <ui:define name="main_content">
             <div id="main">
                 <h:form>   
-                    <h:outputLabel value="Titre : "/>
-                    <h:inputText value="#{promotionManager.promotionToAdd.titre}"/>
-                    <p:commandButton styleClass="waves-effect waves-light btn-large blue" value="Créer" action="#{promotionManager.createPromotion}"/>
+                    <p:outputLabel indicateRequired="true" for='titre' value="Titre : "/>
+                    <p:inputText id='titre' required="true" value="#{promotionManager.promotionToAdd.titre}"/>
+                    <p:commandButton styleClass="waves-effect waves-light btn-large blue" value="Créer la promotion" action="#{promotionManager.createPromotion}"/>
                 </h:form>
             </div>
         
